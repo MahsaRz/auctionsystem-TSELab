@@ -6,6 +6,7 @@
 		<style>
 			table, th, td {
                 /* border: 2px solid black; */
+                
                 padding: 5px;}
 		</style>
 	
@@ -23,10 +24,9 @@
 				<table class="table table-striped table-bordered table-hover table-condensed" style= "width: 100%;" >
 
 				<tr><th>Start Biding:</th><td><?php echo $data['items']->startingBid ?>$</td><td rowspan=4><img style="width: 230px; height:280px" src="<?php echo URLROOT; ?>/img/<?php echo $data['items']->imageFileName;?>"></td></tr>
-				
 				<tr><th>Description:</th><td style="word-wrap: break-word"><?php echo $data['items']->description ?></td></tr>
-				<tr><th>Owner:</th><td><?php echo $data['user']-> name?></td></tr>
-				<tr><th>Email:</throw><td><?php echo $data['user']-> email?></td></tr>
+				<tr><th>Owner:</th><td><span style="word-break:break-all;"><?php echo $data['user']-> name?></span></td></tr>
+                <tr><th>Email:</th><td> <span style="word-break:break-all;"><?php echo $data['user']-> email?></span></td></tr>
 				
 				</table>
     </div>
@@ -37,7 +37,12 @@
 				<h4><b>Time Remaining:</b></h4>
 			</dt>
 			<dd>
+            <?php if ($data['items']->isActive == 1) { ?>
 				<h4><small class="timerSlot text-muted" id="<?php $data['items']->auctionID ?>Timer"></small></h4>
+            <?php }
+            else{
+                echo "0 Min 0 Sec";
+            }?>
 			</dd>
             <?php if($data['items']-> isActive ==1){?>
 		<dt><form method="post">
