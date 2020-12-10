@@ -99,7 +99,7 @@
 
                 // make sure errors are empty
                 if(empty($data['title_err']) && empty($data['description_err']) && empty($data['startingBid_err']) &&  empty($data['address_err']) && empty($data['country_err']) && empty($data['state_err']) && empty($data['zip_err']) && empty($data['itemImage_err'])){
-                    if(move_uploaded_file($_FILES["itemImage"]["tmp_name"], PROJECTROOT . '/public/img/' . $data['imageFileName'])) {
+                    // if(move_uploaded_file($_FILES["itemImage"]["tmp_name"], PROJECTROOT . '/public/img/' . $data['imageFileName'])) {
                         if($this->itemModel->addNewItem($data)){
                             flash('listing_success', 'The item has been added for auction.');
                             redirect('');
@@ -107,7 +107,7 @@
                         else{
                             die('Something went wrong');
                         }
-                    }
+                    // }
                 }
                 else{
 
